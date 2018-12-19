@@ -1,7 +1,6 @@
 function buildMetadata(sample) {
 
   // @TODO: Complete the following function that builds the metadata panel
-
   // Use `d3.json` to fetch the metadata for a sample
   d3.json(`/metadata/${sample}`).then(function(metaData){
         console.log(metaData);
@@ -102,7 +101,7 @@ function buildGauge(wfreq) {
     
     // code adapted from https://plot.ly/javascript/gauge-charts/
     // Calculate gauge level
-    var convertedGauge = (wfreq / 9) * 180;
+    var convertedGauge = (wfreq / 9) * 180; // since we want 9 sections, we use "9" here and henceforth 9 sections for all the formatting
 
     var degrees = 180 - convertedGauge,
        radius = .5;
@@ -151,7 +150,7 @@ function buildGauge(wfreq) {
           color: '850000'
         }
       }],
-    title: 'Belly Button Washing Frequency \n (1-9 Scrubs per Week)',
+    title: 'Belly Button Washing Frequency <br> (1-9 Scrubs per Week)',
     height: 500,
     width: 500,
     xaxis: {zeroline:false, showticklabels:false,
@@ -160,11 +159,10 @@ function buildGauge(wfreq) {
                showgrid: false, range: [-1, 1]}
   };
 
-  var GAUGE = document.getElementById('gauge');
-  Plotly.newPlot(GAUGE, gaugeChartData, gaugeLayout);
+  var Gauge = document.getElementById('gauge');
+  Plotly.newPlot(Gauge, gaugeChartData, gaugeLayout);
 
 }
-
 
 // Initialize the dashboard
 init();
