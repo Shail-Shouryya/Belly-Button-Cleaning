@@ -34,9 +34,10 @@ function buildCharts(sample) {
     var bubbleChartLabels = sampleData["otu_ids"];
 
     var bubbleChartLayout = {
-        margin: {t: 0},
+        autosize: true,
+        margin: {l: 50, r: 30, t: 10, pad: 4}, // adds space in pixels to EDGES of plot
         hovermode: 'closest',
-        xaxis: {title: 'OTU ID'}
+        xaxis: {title: 'OTU ID', automargin: true}
     };
     var bubbleChartData = [{
         x: sampleData["otu_ids"],
@@ -64,7 +65,7 @@ function buildCharts(sample) {
         type: "pie"
     }];
     var pieChartLayout = {
-        margin: {t:0, l:0}
+        margin: {l: 50, r: 50, b: 10, t: 10, pad: 4}
     };
     var pie = document.getElementById('pie');
     Plotly.newPlot(pie, pieChartData, pieChartLayout);
@@ -151,10 +152,12 @@ function buildGauge(wfreq) {
         }
       }],
     title: 'Belly Button Washing Frequency <br> (1-9 Scrubs per Week)',
-    height: 500,
-    width: 500,
+    autosize: true,
+    margin: {l: 0, r: 0, b: -40, t: 70, pad: 4}, // adds space in pixels to EDGES of plot
+    // height: 500,
+    // width: 500,
     xaxis: {zeroline:false, showticklabels:false,
-               showgrid: false, range: [-1, 1]},
+               showgrid: false, range: [-1, 1], autosize: true},
     yaxis: {zeroline:false, showticklabels:false,
                showgrid: false, range: [-1, 1]}
   };
